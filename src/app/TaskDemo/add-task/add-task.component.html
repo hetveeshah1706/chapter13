@@ -1,0 +1,35 @@
+ <h1>Add Task </h1>
+<div class="container">
+  <form (ngSubmit)="onTaskAdd(f)" #f="ngForm">
+    <div class="form-group">
+      <input name="Id" required type="text" placeholder="Enter Id" ngModel #Id="ngModel" class="form-control">
+    </div>
+    <div *ngIf="!Id.valid && !Id.pristine" class="alert alert-danger">
+      Id is required
+    </div>
+    <div class="form-group">
+      <input  required name="Title" type="text" placeholder="Enter Title" ngModel #Title="ngModel"
+        class="form-control">
+    </div>
+    <div *ngIf="!Title.valid && !Title.pristine">
+      <div *ngIf="Title.hasError('required')" class="alert alert-danger">
+        Title is required
+      </div>
+      <div *ngIf="!Title.hasError('required')" class="alert alert-danger">
+        email is invalid
+      </div>
+    </div>
+    <div class="form-group">
+      <select name="Status" class="form-control" ngModel>
+        <option *ngFor="let item of arr">
+          {{item}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button  type="submit" class="form-control btn btn-primary">Add Task</button>
+    </div>
+  </form>
+</div>
+
+
